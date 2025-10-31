@@ -1,0 +1,24 @@
+{
+  "name": "doug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-backend": "cd backend && npm install && cd ..",
+    "install-frontend": "cd frontend && npm install && cd ..",
+    "install-both": "npm run install-backend && npm run install-frontend",
+    "build": "npm run install-both && cd frontend && npm run build && cd ..",
+    "start": "cd backend && node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesusMiir/project-31Oct.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JesusMiir/project-31Oct/issues"
+  },
+  "homepage": "https://github.com/JesusMiir/project-31Oct#readme"
+}

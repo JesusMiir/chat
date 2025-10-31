@@ -1,6 +1,7 @@
 // https://nodejs.org/en/learn/getting-started/websocket
 // node --watch index
 import express from "express";
+import path from "path";
 
 const app = express();
 
@@ -16,6 +17,16 @@ app.use((req, res, next) => {
   console.log(`NEW REQUEST: ${req.method} ${req.url}`);
   next();
 });
+
+// Serve react app for production
+const frontendRoutes = ["/", "/profile"];
+const reactHtml = path.join(import.meta.dirname, "../frontend/dist/index.html");
+for (const route of frontendRoutes) {
+  app.get(route, (req, res) => {
+    res.sendFile(reactHtml);
+  });
+}
+app.use(express.static("../frontend/dist"));
 
 app.get("/ping", (req, res) => {
   res.send("pong");
