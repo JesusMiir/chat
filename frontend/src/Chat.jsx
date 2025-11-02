@@ -10,6 +10,7 @@ export default function Chat() {
 
     const wsUrl = useMemo(() => {
         const base = window.location.origin.replace(/^http/, "ws");
+        // ws://localhost....
         return `${base}/ws`;
     }, []);
 
