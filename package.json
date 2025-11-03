@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/JesusMiir/project-31Oct/issues"
   },
-  "homepage": "https://github.com/JesusMiir/project-31Oct#readme"
+  "homepage": "https://github.com/JesusMiir/project-31Oct#readme",
+  "dependencies": {
+    "zod": "^4.1.12"
+  }
 }

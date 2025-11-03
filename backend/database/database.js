@@ -1,13 +1,13 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize({
+const databaseInstance = new Sequelize({
   dialect: "sqlite",
   storage: "database/database.sqlite",
 });
 
 export async function connectToDb() {
   try {
-    await sequelize.sync({
+    await databaseInstance.sync({
       force: true, // Deletes the database
     });
     console.log("Conneted to db!");
@@ -17,4 +17,4 @@ export async function connectToDb() {
   }
 }
 
-export default sequelize;
+export default databaseInstance;

@@ -1,7 +1,7 @@
-import sequelize from "./database.js";
+import databaseInstance from "./database.js";
 import { DataTypes } from "sequelize";
 
-const UserModel = sequelize.define("User", {
+const UserModel = databaseInstance.define("User", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,

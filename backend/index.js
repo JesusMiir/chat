@@ -3,12 +3,17 @@
 import express from "express";
 import path from "path";
 import userRouter from "./routers/userRouter.js";
-import sequelize, { connectToDb } from "./database/database.js";
+import { connectToDb } from "./database/database.js";
 import seed from "./database/seed.js";
+import cors from "cors";
+import logger from "./middleware/logger.js";
 
 const app = express();
 
 // app configuation
+
+// Allow requests from any origin
+app.use(cors());
 
 // Automatically parsing JSON
 // If you don't do this, your req.body will be undefined
@@ -16,10 +21,7 @@ const app = express();
 app.use(express.json({ type: "*/*" }));
 
 // Logging middleware
-app.use((req, res, next) => {
-  console.log(`NEW REQUEST: ${req.method} ${req.url}`);
-  next();
-});
+app.use(logger);
 
 app.use("/api/user", userRouter);
 
@@ -34,18 +36,18 @@ for (const route of frontendRoutes) {
 }
 app.use(express.static("../frontend/dist"));
 
-app.get("/ping", (req, res) => {
-  res.send("pong");
-});
+// app.get("/ping", (req, res) => {
+//   res.send("pong");
+// });
 
 /*
     To test with curl
     curl POST http://localhost:8800/api/pets --data '{"a": 1, "b": 2}'
 */
-app.post("/api/pets", (req, res) => {
-  console.log("req.body:", req.body);
-  res.send("hello");
-});
+// app.post("/api/pets", (req, res) => {
+//   console.log("req.body:", req.body);
+//   res.send("hello");
+// });
 
 async function start() {
   await connectToDb();

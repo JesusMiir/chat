@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { createUser, getAllUsers } from "../controllers/userController.js";
+import { validateCreateUserInputInBody } from "../middleware/bodyValidators.js";
 
 const userRouter = Router();
 
@@ -14,7 +15,7 @@ userRouter.get("/", async (req, res) => {
             isAdmin: true
         }
 */
-userRouter.post("/", async (req, res) => {
+userRouter.post("/", validateCreateUserInputInBody, async (req, res) => {
   const user = await createUser({
     username: req.body.username,
   });
