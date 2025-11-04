@@ -8,8 +8,8 @@ import * as z from "zod";
 const createUserInputSchema = z.object({
   username: z.string().trim().min(3).max(50).lowercase(),
   password: z.string().min(6),
-  favoriteColor: z.string().optional(),
-  email: z.email(),
+  // favoriteColor: z.string().optional(),
+  // email: z.email(),
 });
 
 /*

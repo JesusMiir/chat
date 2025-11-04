@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import "./Chat.css";
+import styles from "./Chat.module.css";
 
 export default function Chat() {
     const [messages, setMessages] = useState([]);
@@ -50,14 +50,14 @@ export default function Chat() {
     const isMine = (m) => m.type === "chat" && user && m.user === user;
 
     return (
-        <div className="chat">
-            <div className="card">
-                <header className="header">
-                    <span className="logo" aria-hidden>💬</span>
-                    <h1 className="title">Simple Chat</h1>
+        <div className={styles.chat}>
+            <div className={styles.card}>
+                <header className={styles.header}>
+                    <span className={styles.logo} aria-hidden>💬</span>
+                    <h1 className={styles.title}>Simple Chat</h1>
                 </header>
 
-                <div className="name-row">
+                {/* <div className="name-row">
                     <input
                         className="input name-input"
                         placeholder="Your name"
@@ -107,8 +107,8 @@ export default function Chat() {
                         onChange={(e) => setText(e.target.value)}
                     />
                     <button className="btn" type="submit">Send</button>
-                </form>
+                </form>*/}
             </div>
-        </div>
+        </div >
     );
 }
